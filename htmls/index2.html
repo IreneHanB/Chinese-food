@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>味道中华——传统中餐</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../css/index1.css">
+    <script type="text/javascript">  
+            window.onload=function (){  
+            /*实现：5个li分成5列，通过判断当前哪一个li高度最小，然后把div插入到那个li里面*/  
+                var oList=document.getElementById('list');  
+                var aLi=oList.getElementsByTagName('li');  
+                var flag=true;  
+                var json={  
+                    'data':[  
+                        {'src':'../images/pubu1.jpg'},
+                        {'src':'../images/pubu2.jpg'},
+                        {'src':'../images/pubu3.jpg'},  
+                        {'src':'../images/pubu4.jpg'},
+                        {'src':'../images/pubu5.jpg'},
+                        {'src':'../images/pubu6.jpg'},  
+                        {'src':'../images/pubu7.jpg'},
+                        {'src':'../images/pubu8.jpg'},
+                        {'src':'../images/pubu9.jpg'},  
+                        {'src':'../images/pubu10.jpg'},
+                        {'src':'../images/pubu11.jpg'},
+                        {'src':'../images/pubu12.jpg'}  
+                    ],  
+                    'imgH':[  
+                        {'height':'400px'},
+                        {'height':'350px'},
+                        {'height':'320px'},  
+                        {'height':'380px'},
+                        {'height':'420px'},
+                        {'height':'350px'},  
+                        {'height':'300px'},
+                        {'height':'390px'},
+                        {'height':'421px'},  
+                        {'height':'351px'},
+                        {'height':'363px'},
+                        {'height':'423px'}  
+                    ],
+                    'title':[
+                        '<a href="#">香菇油饭</a><img id="like" src="../images/like.png"><img src="../images/ping.png">',
+                        '<a href="#">客家盐焗鸡腿</a><img id="like" src="../images/like.png"><img src="../images/ping.png">',
+                        '<a href="#">回锅香辣猪蹄</a><img id="like" src="../images/like.png"><img src="../images/ping.png">',
+                        '<a href="#">三鲜豆腐羹</a><img id="like" src="../images/like.png"><img src="../images/ping.png">',
+                        '<a href="#">肉丸豆腐</a><img id="like" src="../images/like.png"><img src="../images/ping.png">',
+                        '<a href="#">避风塘茶味虾</a><img id="like" src="../images/like.png"><img src="../images/ping.png">',
+                        '<a href="#">四川凉拌白肉</a><img id="like" src="../images/like.png"><img src="../images/ping.png">',
+                        '<a href="#">凉拌黑木耳</a><img id="like" src="../images/like.png"><img src="../images/ping.png">',
+                        '<a href="#">千丝万缕虾</a><img id="like" src="../images/like.png"><img src="../images/ping.png">',
+                        '<a href="#">葱香煎土豆</a><img id="like" src="../images/like.png"><img src="../images/ping.png">',
+                        '<a href="#">冷豆腐</a><img id="like" src="../images/like.png"><img src="../images/ping.png">',
+                        '<a href="#">朝鲜冷面<a><img id="like" src="../images/like.png"><img src="../images/ping.png">'
+                    ],
+                    'data2':[  
+                        {'src':'../images/p1.png'},
+                        {'src':'../images/p2.png'},
+                        {'src':'../images/p3.png'},  
+                        {'src':'../images/p4.png'},
+                        {'src':'../images/p5.png'},
+                        {'src':'../images/p6.png'},  
+                        {'src':'../images/p7.png'},
+                        {'src':'../images/p8.png'},
+                        {'src':'../images/p9.png'},  
+                        {'src':'../images/p7.png'},
+                        {'src':'../images/p2.png'},
+                        {'src':'../images/p3.png'}  
+                    ],
+                    'people':[
+                        '<h1>DUDUS</h1><p>采集到<a href="#">《我的小小吃货集》</a></p>',
+                        '<h1>网上厨房</h1><p>采集到<a href="#">《美味家常菜》</a></p>',
+                        '<h1>骑小黄鸭的毛毛</h1><p>采集到<a href="#">《一方水土养我》</a></p>',
+                        '<h1>美少女战士</h1><p>采集到<a href="#">《减肥是不可能的》</a></p>',
+                        '<h1>小明</h1><p>采集到<a href="#">《家常菜》</a></p>',
+                        '<h1>有梦的小猪</h1><p>采集到<a href="#">《不是我不想减肥》</a></p>',
+                        '<h1>Irene</h1><p>采集到<a href="#">《无肉不欢》</a></p>',
+                        '<h1>爱丽丝</h1><p>采集到<a href="#">《夏天来啦，凉菜驾到》</a></p>',
+                        '<h1>小怪兽</h1><p>采集到<a href="#">《看看就饿了》</a></p>',
+                        '<h1></h1><p>采集到<a href="#">《土土土土土土豆很土》</a></p>',
+                        '<h1>姜黄人</h1><p>采集到<a href="#">《豆腐，快到嘴里来》</a></p>',
+                        '<h1>逐梦人</h1><p>采集到<a href="#">《延吉美食》</a></p>'
+                    ]
+                }  
+                getLoad();  
+                function getLoad(){  
+                        for (var i=0;i<json.data.length;i++) {  
+                            var min=myMin();  
+                            var oDiv=document.createElement('div');  
+                            oDiv.className='pubudiv';  
+                            var oImg=document.createElement('img'); 
+                            var oImg2=document.createElement('img'); 
+                            oImg.className='pubuimg';  
+                            oImg.src=json.data[i].src; 
+                            oImg2.src=json.data2[i].src;
+                            var oDiv2=document.createElement('div');
+                            var oDiv3=document.createElement('div');
+                            var oDiv4=document.createElement('div');
+                            oDiv2.className='pubutitle';
+                            oDiv3.className='peoplename';
+                            oDiv4.className='introduce';
+                            oDiv2.innerHTML = json.title[i];
+                            oDiv4.innerHTML = json.people[i];
+                            /*这里必须要设置高度，测试中发现js会把每一个节点、属性  
+                            创建好，然后再加载入图片，不设置一开始就不能比较li的高度*/  
+                            oImg.style.height=json.imgH[i].height;  
+                            oDiv.appendChild(oImg);
+                            oDiv3.appendChild(oImg2);
+                            oDiv.appendChild(oDiv2);  
+                            oDiv.appendChild(oDiv3);
+                            oDiv3.appendChild(oDiv4);
+                            //高度最小的li插入div  
+                            aLi[min].appendChild(oDiv);  
+                        }  
+                        flag=true;  
+                }  
+                //获取到当前li高度最小的索引  
+                function myMin(){  
+                    var index=0;  
+                    var min=aLi[index].offsetHeight;  
+                    for (var i=1;i<aLi.length;i++) {  
+                        if(aLi[i].offsetHeight<min){  
+                            index=i;  
+                            min=aLi[index].offsetHeight;  
+                        }  
+                    }  
+                    return index;  
+                }  
+                window.onscroll=function (){  
+                    var scroT=document.documentElement.scrollTop||document.body.scrollTop;  //滚动条的距离
+                    var clieH=document.documentElement.clientHeight||document.body.clientHeight;  //可视区距离
+                    var minN=myMin();  
+                    //这里判断加载是刚出现空白就加载，也就是滚动到了高度最小那一列完了  
+                    //如果 最后一个进入可视区 小于可视区+滚动条距离
+                    if((aLi[minN].offsetTop+aLi[minN].offsetHeight)<(scroT+clieH)){  
+                        if(flag){  
+                            flag=false;  
+                            getLoad();  
+                        }  
+                    }  
+                };  
+            };  
+    </script>  
+</head>
+<body>
+    <div class="header-top">
+    	
+        <div class="header-top0">
+        	<span id="span1"><img id="building" src="../images/left.png"></span>
+            <div class="header-topL">
+
+            	<img src="../images/logo.png">
+            </div>
+            <div class="header-topC">
+                <ul>
+                    <li><a  href="../index.html">首&nbsp;&nbsp;&nbsp;&nbsp;页</a></li>
+                    <li><a href="#">传统中餐</a></li>
+                    <li id="firstpage"><a href="index2.html">中餐菜谱</a></li>
+                    <li><a href="#">中餐文化</a></li>
+                    <li><a href="#">关于我们</a></li>
+                </ul>
+            </div>
+            <div class="sea">
+            	
+            	<input type="text" placeholder="&nbsp;&nbsp;&nbsp;请输入您的内容" onfocus="this.placeholder=' '" onblur="this.placeholder=' '">
+            	<img src="../images/s.png">
+            </div>
+            <span><img id="deng" src="../images/denglong.png"></span>
+        </div>
+    </div> 
+
+    <div class="home2">
+        <div id="area">
+            <div id="bigarea">
+                <div id="recommend">
+                    <img src="../images/recommend.png">
+                </div>
+                <div id="imglist">
+                    <img id="imglist1" src="../images/list1.jpg">
+                </div>
+            </div>
+            <div id="listarea">
+                <ul>
+                    <li id="selected" class="listli">
+                        <img src="../images/name1.png">
+                        <p class="listP">&nbsp;&nbsp;&nbsp;&nbsp;千里探食，不论何时都有中秋月明。如此时刻，“礼”当珍惜!</p>
+                    </li>
+                    <li class="listli">
+                        <img src="../images/name2.png">
+                        <p class="listP">&nbsp;&nbsp;&nbsp;&nbsp;小龙虾已经备好了，就差一个会剥虾的蓝朋友了！</p>
+                    </li>
+                    <li class="listli">
+                        <img src="../images/name3.png">
+                        <p class="listP">&nbsp;&nbsp;&nbsp;&nbsp;有什么是一顿烧烤不能解决的，要是有那就是两顿。</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var oLi = document.getElementsByClassName('listli');
+            var oP = document.getElementsByClassName('listP');
+            var oImg = document.getElementById('imglist1');
+            // oImg.onclick=fucntion(){
+            //     alert(1);
+            // };
+            //alert(oP.innerHTML);
+            oLi[0].onmouseover = function(){
+                oLi[1].id="";
+                oLi[2].id="";
+                this.id = "selected";
+                oImg.src = "../images/list1.jpg";
+
+            }
+            oLi[0].onmouseout = function(){
+                this.id = "selected";
+            }
+            oLi[1].onmouseover = function(){
+                oLi[0].id="";
+                oLi[2].id="";
+                this.id = "selected"
+                oImg.src = "../images/list2.jpg";
+            }
+            oLi[1].onmouseout = function(){
+                this.id ="";
+            }
+            oLi[2].onmouseover = function(){
+                oLi[0].id="";
+                oLi[1].id="";
+                this.id = "selected"
+                oImg.src = "../images/list3.jpg";
+            }
+            oLi[2].onmouseout = function(){
+                this.id ="";
+            }
+            // oLi[0].onclick = function(){
+            //     oLi[2].id="";
+            //     oLi[1].id="";
+            //     this.style.background = "#e25111";
+            //     oP[0].style.color = "#fff";
+            //     oImg.src = "../images/list1.jpg";
+            //     //alert(1);
+            // }
+            // oLi[1].onclick = function(){
+            //     oLi[0].id="";
+            //     oLi[2].id="";
+            //     this.style.background = "#e25111";
+            //     oP[1].style.color = "#fff";
+            //     oImg.src = "../images/list2.jpg";
+            //     //alert(1);
+            // }
+            // oLi[2].onclick = function(){
+            //     oLi[0].id="";
+            //     oLi[1].id="";
+            //     this.style.background = "#e25111";
+            //     oP[2].style.color = "#fff";
+            //     oImg.src = "../images/list3.jpg";
+            //     //alert(1);
+            //}
+        </script>
+        <ul id="list">  
+            <li></li>  
+            <li></li>  
+            <li></li>  
+            <li></li>   
+        </ul>  
+    </div> 
+    <button id="myBtn" title="回顶部"> ^ </button>
+    <script type="text/javascript">
+        var oBtn = document.getElementById('myBtn');
+        oBtn.style.display = "block";
+        // 点击按钮，返回顶部
+        oBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+</body>
+</html>
